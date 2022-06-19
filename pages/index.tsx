@@ -14,8 +14,8 @@ const Index: NextPage = () => {
 	};
 
 	return (
-		<MainLayout title="Home" className="flex-cc col pb-32">
-			<div className="flex-cc col">
+		<MainLayout title="Home" className="flex-bc col">
+			<div className="flex-cc col flex-1 h-full">
 				<QRCode value={'ethereum:' + ADDRESS} level="L" />
 				<h1 className="z-10 mt-6 mb-6 text-4xl font-bold text-center">
 					<span className="text-purple-600">eth</span>
@@ -38,13 +38,13 @@ const Index: NextPage = () => {
 			</div>
 
 			<div
-				className="fixed flex-cc bottom-0 w-full h-1/4 bg-cover"
+				className="flex-cc w-full bg-cover"
 				style={{
 					backgroundImage: 'url(https://svgshare.com/i/_H4.svg)',
 					paddingBottom: 'env(safe-area-inset-bottom)',
 				}}
 			>
-				<p className="flex-cc gap-1 text-lg">R. Bintang Bagus Putra Angkasa</p>
+				<p className="flex-cc my-8 text-lg">R. Bintang Bagus Putra Angkasa</p>
 			</div>
 		</MainLayout>
 	);
