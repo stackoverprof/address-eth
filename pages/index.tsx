@@ -21,7 +21,9 @@ const Index: NextPage = () => {
 					<span className="text-purple-600">eth</span>
 					<span className="text-gray-300">.angkasa.one</span>
 				</h1>
-				<p className="z-10 mb-2 max-w-sm text-center">{ADDRESS}</p>
+				<p className="z-10 px-8 mb-2 max-w-sm text-center truncate overflow-ellipsis">
+					{ADDRESS}
+				</p>
 				<button
 					onClick={handleCopy}
 					className="flex-cc px-2.5 text-lg hover:bg-gray-300 py-1 font-medium bg-gray-200 rounded"
