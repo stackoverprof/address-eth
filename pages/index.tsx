@@ -1,26 +1,40 @@
-import React from 'react';
-import Link from '@components/_shared/Link';
+import React, { useState } from 'react';
+import ADDRESS from 'address.constants';
 import MainLayout from '@components/_layouts/MainLayout';
+import QRCode from 'react-qr-code';
+import { FiCopy } from 'react-icons/fi';
 import { NextPage } from 'next';
 
 const Index: NextPage = () => {
-	return (
-		<MainLayout title="Home" className="flex-sc col">
-			<h1 className="z-10 mt-48 mb-4 text-4xl font-bold text-center">Next (Basic) Starter</h1>
-			<p className="z-10 mb-8 max-w-sm text-center">
-				The template for a quick and intuitive workflow with Next.js and tailwindcss
-			</p>
+	const [isCopied, setIsCopied] = useState(false);
 
-			<div className="flex-cc z-10 gap-4">
-				<Link
-					href="/about"
-					className="px-4 py-2 text-white bg-theme-orange hover:bg-opacity-80"
+	const handleCopy = () => {
+		navigator.clipboard.writeText(ADDRESS);
+		setIsCopied(true);
+	};
+
+	return (
+		<MainLayout title="Home" className="flex-cc col pb-32">
+			<div className="flex-cc col">
+				<QRCode value={'ethereum:' + ADDRESS} level="L" />
+				<h1 className="z-10 mt-6 mb-6 text-4xl font-bold text-center">
+					<span className="text-purple-600">eth</span>
+					<span className="text-gray-300">.angkasa.one</span>
+				</h1>
+				<p className="z-10 mb-2 max-w-sm text-center">{ADDRESS}</p>
+				<button
+					onClick={handleCopy}
+					className="flex-cc px-2.5 text-lg hover:bg-gray-300 py-1 font-medium bg-gray-200 rounded"
 				>
-					ABOUT
-				</Link>
-				<Link href="/form" className="px-4 py-2 text-white bg-black hover:bg-opacity-80">
-					FORM
-				</Link>
+					{isCopied ? (
+						<p className="flex-cc text-gray-400">Copied!</p>
+					) : (
+						<p className="flex-cc">
+							<FiCopy className="mr-2" />
+							Copy
+						</p>
+					)}
+				</button>
 			</div>
 
 			<div
@@ -30,26 +44,10 @@ const Index: NextPage = () => {
 					paddingBottom: 'env(safe-area-inset-bottom)',
 				}}
 			>
-				<p className="flex-cc gap-1 text-lg">
-					See the{' '}
-					<Link
-						href="https://github.com/stackoverprof/next-starter"
-						target="_blank"
-						className="font-bold underline"
-					>
-						repository
-					</Link>
-				</p>
+				<p className="flex-cc gap-1 text-lg">R. Bintang Bagus Putra Angkasa</p>
 			</div>
 		</MainLayout>
 	);
 };
-
-// Above are sample use of
-
-// useLayout: which is a custom hooks in context management
-// Alert: custom popping out alert box that automatically vanish
-// Link: custom link that can be styled into anything and is so comfortable
-// MainLayout: open 'components/_layouts/', that is the place where you put navbar and footer, not here
 
 export default Index;
